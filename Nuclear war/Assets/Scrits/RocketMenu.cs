@@ -5,16 +5,17 @@ using UnityEngine.UI;
 
 public class RocketMenu : MonoBehaviour
 {
-    public Main MainScript;
+    public test MainScript;
+    
+    [Header("Текста")]
+    [SerializeField] private Text CounterRocket;
+    [SerializeField] private Text CounterRocketGrowth;
 
-    public Text CounterRocket;
-    public Text CounterRocketGrowth;
-
-    void Start()
+    private void Start()
     {
         StartCoroutine(Rocket()); 
     }  
-    IEnumerator Rocket()
+    private IEnumerator Rocket()
     {
         yield return new WaitForSeconds(1);
         MainScript.Rocket += MainScript.GrowthRocket;
