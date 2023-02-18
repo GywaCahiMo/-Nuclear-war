@@ -8,6 +8,7 @@ public class RocketMenu : MonoBehaviour
     public Main MainScript;
 
     public Text CounterRocket;
+    public Text CounterRocketGrowth;
 
     void Start()
     {
@@ -16,8 +17,9 @@ public class RocketMenu : MonoBehaviour
     IEnumerator Rocket()
     {
         yield return new WaitForSeconds(1);
-        MainScript.Rocket += MainScript.IncreaseRocket;
+        MainScript.Rocket += MainScript.GrowthRocket;
         CounterRocket.text = MainScript.Rocket.ToString();
+        CounterRocketGrowth.text = "+" + MainScript.GrowthRocket.ToString();
         StartCoroutine(Rocket());
     }
 }

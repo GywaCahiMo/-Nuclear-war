@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -0.0000019073}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchoredPosition: {x: 77.75, y: -0.0000019073}
+  m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241112520
 MonoBehaviour:
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4698875, g: 0.8392157, b: 0.282353, a: 1}
+  m_Color: {r: 0.2567276, g: 0.26415092, b: 0.25293696, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -406,8 +406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: -0.000026703}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchoredPosition: {x: -2.25, y: 0.000024795}
+  m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997426737
 MonoBehaviour:
@@ -486,8 +486,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: 0.0000019073}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchoredPosition: {x: -82.25003, y: 0.0000019073}
+  m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1126218353
 MonoBehaviour:
@@ -577,9 +577,9 @@ MonoBehaviour:
   Pro: 0
   Rocket: 0
   Factory: 0
-  IncreasePro: 1
-  IncreaseRocket: 1
-  IncreaseFactory: 1
+  GrowthPro: 1
+  GrowthRocket: 1
+  GrowthFactory: 1
 --- !u!1 &1447245887
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08597365, g: 0.10449467, b: 0.26415092, a: 1}
+  m_Color: {r: 0.38131902, g: 0.38192716, b: 0.38679248, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -796,8 +796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 105.00006, y: -35}
-  m_SizeDelta: {x: 210, y: 70}
+  m_AnchoredPosition: {x: 122.25, y: -35}
+  m_SizeDelta: {x: 240, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829237750
 MonoBehaviour:
@@ -813,6 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainScript: {fileID: 1175126045}
   CounterRocket: {fileID: 997426737}
+  CounterRocketGrowth: {fileID: 241112520}
 --- !u!1 &2091536880
 GameObject:
   m_ObjectHideFlags: 0
