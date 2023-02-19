@@ -20,8 +20,22 @@ public class RocketMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         MainScript.Rocket += MainScript.GrowthRocket;
-        CounterRocket.text = MainScript.Rocket.ToString();
-        CounterRocketGrowth.text = "+" + MainScript.GrowthRocket.ToString();
+        if (MainScript.Rocket >= 0 && MainScript.Rocket < 1000)
+        {
+            CounterRocket.text = "<size=36>" + MainScript.Rocket.ToString() + "</size>";
+        }
+        if (MainScript.Rocket >= 1000 && MainScript.Rocket < 10000)
+        {
+            CounterRocket.text = "<size=31>" + MainScript.Rocket.ToString() + "</size>";
+        }
+        if (MainScript.Rocket >= 10000 && MainScript.Rocket < 100000)
+        {
+            CounterRocket.text = "<size=26>" + MainScript.Rocket.ToString() + "</size>";
+        }
         StartCoroutine(Rocket());
+    }
+    private void Update()
+    {
+        CounterRocketGrowth.text = "+" + MainScript.GrowthRocket.ToString();
     }
 }

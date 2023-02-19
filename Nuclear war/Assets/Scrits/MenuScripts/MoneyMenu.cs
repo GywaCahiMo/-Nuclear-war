@@ -16,9 +16,23 @@ public class MoneyMenu : MonoBehaviour
     }
     private IEnumerator Money()
     {
-        yield return new WaitForSeconds(1);
-        MainScript.Money += MainScript.Factory * 200;
-        CounterMoney.text = MainScript.Money.ToString();
+        yield return new WaitForSeconds(2);
+        MainScript.Money += MainScript.Factory * 200;        
         StartCoroutine(Money());
+    }
+    private void Update()
+    {
+        if(MainScript.Money >= 0 && MainScript.Money < 10000)
+        {
+            CounterMoney.text = "<size=36>" + MainScript.Money.ToString() + "</size>";
+        }
+        if (MainScript.Money >= 10000 && MainScript.Money < 100000)
+        {
+            CounterMoney.text = "<size=31>" + MainScript.Money.ToString() + "</size>";
+        }
+        if (MainScript.Money >= 100000 && MainScript.Money < 1000000)
+        {
+            CounterMoney.text = "<size=26>" + MainScript.Money.ToString() + "</size>";
+        }
     }
 }

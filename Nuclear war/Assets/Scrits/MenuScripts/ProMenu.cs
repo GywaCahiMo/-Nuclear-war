@@ -18,8 +18,22 @@ public class ProMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         MainScript.Pro += MainScript.GrowthPro;
-        CounterPro.text = MainScript.Pro.ToString();
-        CounterProGrowth.text = "+" + MainScript.GrowthPro.ToString();
+        if (MainScript.Pro >= 0 && MainScript.Pro < 1000)
+        {
+            CounterPro.text = "<size=36>" + MainScript.Pro.ToString() + "</size>";
+        }
+        if (MainScript.Pro >= 1000 && MainScript.Pro < 10000)
+        {
+            CounterPro.text = "<size=31>" + MainScript.Pro.ToString() + "</size>";
+        }
+        if (MainScript.Pro >= 10000 && MainScript.Rocket < 100000)
+        {
+            CounterPro.text = "<size=26>" + MainScript.Pro.ToString() + "</size>";
+        }   
         StartCoroutine(Pro());
+    }
+    private void Update()
+    {
+        CounterProGrowth.text = "+" + MainScript.GrowthPro.ToString();
     }
 }
