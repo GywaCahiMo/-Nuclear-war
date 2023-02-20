@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-     
+using Unity.VisualScripting;
+
 public class BotScript : MonoBehaviour
 {
-    [SerializeField] private int moneyBot, proBot, rocketBot, factoryBot, growthProBot = 1, growthRocketBot = 1, growthFactoryBot = 1;
+    [SerializeField] public int moneyBot, proBot, rocketBot, factoryBot, growthProBot = 1, growthRocketBot = 1, growthFactoryBot = 1;
     [SerializeField] private TMP_Text textRosketBot, textProBot;
     [SerializeField] private int RandNomder, counterShop = 0;
+    [SerializeField] public bool BotDead = false;
+    public GameObject BotAcctivity;
 
     private void Start()
     {
@@ -144,6 +147,10 @@ public class BotScript : MonoBehaviour
                 growthFactoryBot++;
                 counterShop = 0;
             }
+        }
+        if(BotDead == true)
+        {
+            Destroy(BotAcctivity);
         }
     }           
 }
