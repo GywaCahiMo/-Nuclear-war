@@ -18,6 +18,12 @@ public class FabricMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(20);
         MainScript.Factory += MainScript.GrowthFactory;
+        
+        StartCoroutine(Factory());
+    }
+    private void Update()
+    {
+        CounterFactoryGrowth.text = "+" + MainScript.GrowthFactory.ToString(); 
         if (MainScript.Factory >= 0 && MainScript.Factory < 1000)
         {
             CounterFactory.text = "<size=36>" + MainScript.Factory.ToString() + "</size>";
@@ -29,11 +35,6 @@ public class FabricMenu : MonoBehaviour
         if (MainScript.Factory >= 10000 && MainScript.Factory < 100000)
         {
             CounterFactory.text = "<size=26>" + MainScript.Factory.ToString() + "</size>";
-        }
-        StartCoroutine(Factory());
-    }
-    private void Update()
-    {
-        CounterFactoryGrowth.text = "+" + MainScript.GrowthFactory.ToString();    
+        }   
     }
 }

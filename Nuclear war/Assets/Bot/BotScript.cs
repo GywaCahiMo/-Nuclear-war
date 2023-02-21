@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 
 public class BotScript : MonoBehaviour
 {
+    public test MainScript;
+    public ButtonAttak attakButton;
     [SerializeField] public int moneyBot, proBot, rocketBot, factoryBot, growthProBot = 1, growthRocketBot = 1, growthFactoryBot = 1;
     [SerializeField] private TMP_Text textRosketBot, textProBot;
     [SerializeField] private int RandNomder, counterShop = 0;
@@ -147,6 +149,10 @@ public class BotScript : MonoBehaviour
                 growthFactoryBot++;
                 counterShop = 0;
             }
+        }
+        if(MainScript.Rocket < rocketBot * 1.2f && rocketBot >= 1000)
+        {
+            attakButton.AttacStart();
         }
         if(BotDead == true)
         {
