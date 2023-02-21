@@ -1,162 +1,178 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 
 public class BotScript : MonoBehaviour
 {
-    public test MainScript;
+    public test MainSrcipt;
     public ButtonAttak attakButton;
-    [SerializeField] public int moneyBot, proBot, rocketBot, factoryBot, growthProBot = 1, growthRocketBot = 1, growthFactoryBot = 1;
-    [SerializeField] private TMP_Text textRosketBot, textProBot;
+
+    [SerializeField] public int moneyUsa, proUsa, rocketUsa, factoryUsa, growthProUsa = 1, growthRocketUsa = 1, growthFactoryUsa = 1;
+    [SerializeField] private TMP_Text textRosketUsa, textProUsa;
     [SerializeField] private int RandNomder, counterShop = 0;
-    [SerializeField] public bool BotDead = false;
-    public GameObject BotAcctivity;
+    private int remainderRocketUsa;
+    public GameObject UsaAcctivity;
 
     private void Start()
     {
-        StartCoroutine(RocketBot());
-        StartCoroutine(ProBot());
-        StartCoroutine(FactoryBot());
-        StartCoroutine(MoneyBot());
+        StartCoroutine(RocketUsa());
+        StartCoroutine(ProUsa());
+        StartCoroutine(FactoryUsa());
+        StartCoroutine(MoneyUsa());
 
         RandNomder = Random.Range(0, 3);
     }
-    private IEnumerator RocketBot()
+    public void AttackUsa()
+    {
+        remainderRocketUsa = rocketUsa - (MainSrcipt.Pro * 2);
+        MainSrcipt.Pro -= rocketUsa / 2;
+        MainSrcipt.Factory -= remainderRocketUsa / 10;
+        rocketUsa = 0;
+        if (MainSrcipt.Pro < 0)
+        {
+            MainSrcipt.Pro = 0;
+        }
+    }
+    private IEnumerator RocketUsa()
     {
         yield return new WaitForSeconds(1);
-        rocketBot += growthRocketBot;
-        textRosketBot.text = rocketBot.ToString();
-        StartCoroutine(RocketBot());
+        rocketUsa += growthRocketUsa;
+        textRosketUsa.text = rocketUsa.ToString();
+        StartCoroutine(RocketUsa());
     }
-    private IEnumerator ProBot()
+    private IEnumerator ProUsa()
     {
         yield return new WaitForSeconds(1.5f);
-        proBot += growthProBot;
-        textProBot.text = proBot.ToString();
-        StartCoroutine(ProBot());
+        proUsa += growthProUsa;
+        textProUsa.text = proUsa.ToString();
+        StartCoroutine(ProUsa());
     }
-    private IEnumerator FactoryBot()
+    private IEnumerator FactoryUsa()
     {
         yield return new WaitForSeconds(20);
-        factoryBot += growthFactoryBot;
-        StartCoroutine(FactoryBot());
+        factoryUsa += growthFactoryUsa;
+        StartCoroutine(FactoryUsa());
     }
-    private IEnumerator MoneyBot()
+    private IEnumerator MoneyUsa()
     {
         yield return new WaitForSeconds(2);
-        moneyBot += factoryBot * 200;
-        StartCoroutine(MoneyBot());
+        moneyUsa += factoryUsa * 200;
+        StartCoroutine(MoneyUsa());
     }
     private void Update()
     {
         if (RandNomder == 0)
         {
-            if (counterShop == 0 && moneyBot >= 10000)
+            if (counterShop == 0 && moneyUsa >= 10000)
             {
-                moneyBot -= 10000;
-                growthRocketBot++;
+                moneyUsa -= 10000;
+                growthRocketUsa++;
                 counterShop++;
             }
-            if (counterShop == 1 && moneyBot >= 10000)
+            if (counterShop == 1 && moneyUsa >= 10000)
             {
-                moneyBot -= 10000;
-                growthRocketBot++;
+                moneyUsa -= 10000;
+                growthRocketUsa++;
                 counterShop++;
             }
-            if (counterShop == 2 && moneyBot >= 10000)
+            if (counterShop == 2 && moneyUsa >= 10000)
             {
-                moneyBot -= 10000;
-                growthRocketBot++;
+                moneyUsa -= 10000;
+                growthRocketUsa++;
                 counterShop++;
             }
-            if (counterShop == 3 && moneyBot >= 15000)
+            if (counterShop == 3 && moneyUsa >= 15000)
             {
-                moneyBot -= 15000;
-                growthProBot++;
+                moneyUsa -= 15000;
+                growthProUsa++;
                 counterShop++;
             }
-            if (counterShop == 4 && moneyBot >= 20000)
+            if (counterShop == 4 && moneyUsa >= 20000)
             {
-                moneyBot -= 20000;
-                growthFactoryBot++;
+                moneyUsa -= 20000;
+                growthFactoryUsa++;
                 counterShop = 0;
             }
         }
         if (RandNomder == 1)
         {
-            if (counterShop == 0 && moneyBot >= 10000)
+            if (counterShop == 0 && moneyUsa >= 10000)
             {
-                moneyBot -= 10000;
-                growthRocketBot++;
+                moneyUsa -= 10000;
+                growthRocketUsa++;
                 counterShop++;
             }
-            if (counterShop == 1 && moneyBot >= 15000)
+            if (counterShop == 1 && moneyUsa >= 15000)
             {
-                moneyBot -= 15000;
-                growthProBot++;
+                moneyUsa -= 15000;
+                growthProUsa++;
                 counterShop++;
             }
-            if (counterShop == 2 && moneyBot >= 20000)
+            if (counterShop == 2 && moneyUsa >= 20000)
             {
-                moneyBot -= 20000;
-                growthFactoryBot++;
+                moneyUsa -= 20000;
+                growthFactoryUsa++;
                 counterShop++;
             }
-            if (counterShop == 3 && moneyBot >= 20000)
+            if (counterShop == 3 && moneyUsa >= 20000)
             {
-                moneyBot -= 20000;
-                growthFactoryBot++;
+                moneyUsa -= 20000;
+                growthFactoryUsa++;
                 counterShop++;
             }
-            if (counterShop == 4 && moneyBot >= 20000)
+            if (counterShop == 4 && moneyUsa >= 20000)
             {
-                moneyBot -= 20000;
-                growthFactoryBot++;
+                moneyUsa -= 20000;
+                growthFactoryUsa++;
                 counterShop = 0;
             }
         }
         if (RandNomder == 2)
         {
-            if (counterShop == 0 && moneyBot >= 10000)
+            if (counterShop == 0 && moneyUsa >= 10000)
             {
-                moneyBot -= 10000;
-                growthRocketBot++;
+                moneyUsa -= 10000;
+                growthRocketUsa++;
                 counterShop++;
             }
-            if (counterShop == 1 && moneyBot >= 15000)
+            if (counterShop == 1 && moneyUsa >= 15000)
             {
-                moneyBot -= 15000;
-                growthProBot++;
+                moneyUsa -= 15000;
+                growthProUsa++;
                 counterShop++;
             }
-            if (counterShop == 2 && moneyBot >= 15000)
+            if (counterShop == 2 && moneyUsa >= 15000)
             {
-                moneyBot -= 15000;
-                growthProBot++;
+                moneyUsa -= 15000;
+                growthProUsa++;
                 counterShop++;
             }
-            if (counterShop == 3 && moneyBot >= 15000)
+            if (counterShop == 3 && moneyUsa >= 15000)
             {
-                moneyBot -= 15000;
-                growthProBot++;
+                moneyUsa -= 15000;
+                growthProUsa++;
                 counterShop++;
             }
-            if (counterShop == 4 && moneyBot >= 20000)
+            if (counterShop == 4 && moneyUsa >= 20000)
             {
-                moneyBot -= 20000;
-                growthFactoryBot++;
+                moneyUsa -= 20000;
+                growthFactoryUsa++;
                 counterShop = 0;
             }
         }
-        if(MainScript.Rocket < rocketBot * 1.2f && rocketBot >= 1000)
+        if(MainSrcipt.Rocket < rocketUsa * 1.2f && rocketUsa >= 1000)
         {
             attakButton.AttacStart();
         }
-        if(BotDead == true)
+        if(factoryUsa <= 0)
         {
-            Destroy(BotAcctivity);
+            moneyUsa = 0;
+            proUsa = 0;
+            rocketUsa = 0;
+            factoryUsa = 0;
+            growthProUsa = 0;
+            growthRocketUsa = 0;
+            growthFactoryUsa = 0;
         }
     }           
 }
