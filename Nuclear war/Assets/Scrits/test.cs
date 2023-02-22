@@ -8,7 +8,7 @@ public class test : MonoBehaviour
     public BotScript UsaScript;
     public ChinaScript ChinaScript;
 
-    [SerializeField] public int Money, Pro, Rocket, Factory, GrowthPro = 1, GrowthRocket = 1, GrowthFactory = 1;
+    [SerializeField] public int Money, Pro, Rocket, Factory, GrowthPro = 1, GrowthRocket = 1, GrowthFactory = 1,nomderCounry = 0;
     [SerializeField] public bool Restert = false;
     private int remainderRocket;
     public GameObject ScreanDead;
@@ -27,6 +27,7 @@ public class test : MonoBehaviour
     }
     public void AttckPleer()
     {
+
         Rocket -= Convert.ToInt32(SlidersUsa.value);
         remainderRocket = Convert.ToInt32(SlidersUsa.value) - (UsaScript.proUsa * 2);
         UsaScript.proUsa -= Convert.ToInt32(SlidersUsa.value) / 2;
@@ -61,7 +62,7 @@ public class test : MonoBehaviour
             ScreanDead.SetActive(true);
             Time.timeScale = 0;
         }
-        SlidersUsa.maxValue = Rocket;
-        SlidersChina.maxValue = Rocket;
+        SlidersUsa.maxValue = Rocket - SlidersChina.value;
+        SlidersChina.maxValue = Rocket - SlidersUsa.value;
     }
 }

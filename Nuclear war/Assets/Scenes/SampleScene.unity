@@ -3071,6 +3071,7 @@ MonoBehaviour:
   GrowthPro: 1
   GrowthRocket: 1
   GrowthFactory: 1
+  nomderCounry: 0
   Restert: 0
   ScreanDead: {fileID: 778680438}
 --- !u!224 &1175126046
@@ -3505,6 +3506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSrcipt: {fileID: 1175126045}
   attakButton: {fileID: 1083899024}
+  chinaScript: {fileID: 1759936061}
   moneyUsa: 0
   proUsa: 0
   rocketUsa: 0
@@ -4515,6 +4517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSrcipt: {fileID: 1175126045}
   attakButton: {fileID: 1083899024}
+  botUsaScript: {fileID: 1414627312}
   moneyChina: 0
   proChina: 0
   rocketChina: 0

@@ -18,11 +18,21 @@ public class ButtonAttak : MonoBehaviour
     }
     public void GeneralAttack()
     {
+        if(BotUsaScript.factoryUsa > 0)
+        {
+            MainSrcipt.nomderCounry++;
+        }
+        if (BotChinaScript.factoryChina > 0)
+        {
+            MainSrcipt.nomderCounry++;
+        }
         MainSrcipt.AttckPleer();
         BotUsaScript.AttackUsa();
         BotChinaScript.AttackChina();
 
         ButtonAttacStart.SetActive(true);
         Time.timeScale = 1;
+
+        MainSrcipt.nomderCounry = 0;
     }
 }

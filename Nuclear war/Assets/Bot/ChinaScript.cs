@@ -6,6 +6,7 @@ public class ChinaScript : MonoBehaviour
 {
     public test MainSrcipt;
     public ButtonAttak attakButton;
+    public BotScript botUsaScript;
 
     [SerializeField] public int moneyChina, proChina, rocketChina, factoryChina, growthProChina = 1, growthRocketChina = 1, growthFactoryChina = 1;
     [SerializeField] private TMP_Text textRosketChina, textProChina;
@@ -24,14 +25,24 @@ public class ChinaScript : MonoBehaviour
     }
     public void AttackChina()
     {
-        remainderRocketChina = rocketChina - (MainSrcipt.Pro * 2);
-        MainSrcipt.Pro -= rocketChina / 2;
+        //атака на игрока
+        remainderRocketChina = (rocketChina / MainSrcipt.nomderCounry) - (MainSrcipt.Pro * 2);
+        MainSrcipt.Pro -= (rocketChina / MainSrcipt.nomderCounry) / 2;
         MainSrcipt.Factory -= remainderRocketChina / 10;
-        rocketChina = 0;
         if (MainSrcipt.Pro < 0)
         {
             MainSrcipt.Pro = 0;
         }
+        //атака на сша
+        remainderRocketChina = (rocketChina / MainSrcipt.nomderCounry) - (botUsaScript.proUsa * 2);
+        botUsaScript.proUsa -= (rocketChina / MainSrcipt.nomderCounry) / 2;
+        botUsaScript.factoryUsa -= remainderRocketChina / 10;
+        
+        if (botUsaScript.proUsa < 0)
+        {
+            botUsaScript.proUsa = 0;
+        }
+        rocketChina = 0;
     }
     private IEnumerator RocketChina()
     {
@@ -160,7 +171,7 @@ public class ChinaScript : MonoBehaviour
                 counterShop = 0;
             }
         }
-        if (MainSrcipt.Rocket < rocketChina * 1.2f && rocketChina >= 1000)
+        if ((rocketChina / 2) > (MainSrcipt.Rocket + botUsaScript.rocketUsa) && rocketChina >= 4000)
         {
             attakButton.AttacStart();
         }
