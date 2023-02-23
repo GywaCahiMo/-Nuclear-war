@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class ButtonAttak : MonoBehaviour
 {
     public test MainSrcipt;
@@ -25,14 +24,15 @@ public class ButtonAttak : MonoBehaviour
         if (BotChinaScript.factoryChina > 0)
         {
             MainSrcipt.nomderCounry++;
-        }
-        MainSrcipt.AttckPleer();
+        }     
         BotUsaScript.AttackUsa();
         BotChinaScript.AttackChina();
-
-        ButtonAttacStart.SetActive(true);
+        MainSrcipt.AttckPleer();      
+        ButtonAttacStart.SetActive(true);      
         Time.timeScale = 1;
-
         MainSrcipt.nomderCounry = 0;
+        MainSrcipt.ImagePleerAttack.SetActive(false);
+        BotUsaScript.ImageUsaAttack.SetActive(false);
+        BotChinaScript.ImageChinaAttack.SetActive(false);
     }
 }

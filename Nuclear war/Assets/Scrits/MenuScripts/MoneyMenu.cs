@@ -13,11 +13,12 @@ public class MoneyMenu : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Money());
+        MainScript.Money = Random.Range(20000, 50000);
     }
     private IEnumerator Money()
     {
         yield return new WaitForSeconds(2);
-        MainScript.Money += MainScript.Factory * 200;        
+        MainScript.Money += MainScript.Factory * 100;        
         StartCoroutine(Money());
     }
     private void Update()

@@ -9,10 +9,10 @@ public class BotScript : MonoBehaviour
     public ChinaScript chinaScript;
 
     [SerializeField] public int moneyUsa, proUsa, rocketUsa, factoryUsa, growthProUsa = 1, growthRocketUsa = 1, growthFactoryUsa = 1;
-    [SerializeField] private TMP_Text textRosketUsa, textProUsa;
+    [SerializeField] private TMP_Text textRosketUsa, textProUsa, textFabricUsa;
     [SerializeField] private int RandNomder, counterShop = 0;
     private int remainderRocketUsa;
-    public GameObject UsaAcctivity;
+    public GameObject ImageUsaAttack;
 
     private void Start()
     {
@@ -22,52 +22,51 @@ public class BotScript : MonoBehaviour
         StartCoroutine(MoneyUsa());
 
         RandNomder = Random.Range(0, 3);
+        moneyUsa = Random.Range(20000, 50000);
+        factoryUsa = Random.Range(3, 7);
     }
     public void AttackUsa()
     {
+        remainderRocketUsa = rocketUsa / MainSrcipt.nomderCounry;
         //атака на игрока
-        remainderRocketUsa = (rocketUsa / MainSrcipt.nomderCounry) - (MainSrcipt.Pro * 2);
-        MainSrcipt.Pro -= (rocketUsa / MainSrcipt.nomderCounry) / 2;
-        MainSrcipt.Factory -= remainderRocketUsa / 10;
-        if (MainSrcipt.Pro < 0)
+        MainSrcipt.Pro -= remainderRocketUsa;
+        if(MainSrcipt.Pro < 0)
         {
+            MainSrcipt.Factory += MainSrcipt.Pro / 5;
             MainSrcipt.Pro = 0;
         }
         //атака на китай
-        remainderRocketUsa = (rocketUsa / MainSrcipt.nomderCounry) - (chinaScript.proChina * 2);
-        chinaScript.proChina -= (rocketUsa / MainSrcipt.nomderCounry) / 2;
-        chinaScript.factoryChina -= remainderRocketUsa / 10;
-        
-        if (chinaScript.proChina < 0)
+        chinaScript.proChina -= remainderRocketUsa;
+        if(chinaScript.proChina < 0)
         {
+            chinaScript.factoryChina += chinaScript.proChina / 5;
             chinaScript.proChina = 0;
         }
         rocketUsa = 0;
+        remainderRocketUsa = 0;
     }
     private IEnumerator RocketUsa()
     {
         yield return new WaitForSeconds(1);
-        rocketUsa += growthRocketUsa;
-        textRosketUsa.text = rocketUsa.ToString();
+        rocketUsa += growthRocketUsa;      
         StartCoroutine(RocketUsa());
     }
     private IEnumerator ProUsa()
     {
         yield return new WaitForSeconds(1.5f);
-        proUsa += growthProUsa;
-        textProUsa.text = proUsa.ToString();
+        proUsa += growthProUsa; 
         StartCoroutine(ProUsa());
     }
     private IEnumerator FactoryUsa()
     {
-        yield return new WaitForSeconds(20);
-        factoryUsa += growthFactoryUsa;
+        yield return new WaitForSeconds(10);
+        factoryUsa += growthFactoryUsa;    
         StartCoroutine(FactoryUsa());
     }
     private IEnumerator MoneyUsa()
     {
         yield return new WaitForSeconds(2);
-        moneyUsa += factoryUsa * 200;
+        moneyUsa += factoryUsa * 100;
         StartCoroutine(MoneyUsa());
     }
     private void Update()
@@ -171,9 +170,10 @@ public class BotScript : MonoBehaviour
                 counterShop = 0;
             }
         }
-        if((rocketUsa / 2) > (MainSrcipt.Rocket + chinaScript.factoryChina) && rocketUsa >= 4000)
-        {
-            attakButton.AttacStart();
+        if(rocketUsa > MainSrcipt.Rocket && rocketUsa > chinaScript.rocketChina && rocketUsa >= 1000)
+        {   
+            ImageUsaAttack.SetActive(true);
+            attakButton.AttacStart();          
         }
         if(factoryUsa <= 0)
         {
@@ -185,5 +185,8 @@ public class BotScript : MonoBehaviour
             growthRocketUsa = 0;
             growthFactoryUsa = 0;
         }
+        textRosketUsa.text = rocketUsa.ToString();
+        textProUsa.text = proUsa.ToString();
+        textFabricUsa.text = factoryUsa.ToString();
     }           
 }

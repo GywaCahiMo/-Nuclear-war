@@ -13,10 +13,11 @@ public class FabricMenu : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Factory());
+        MainScript.Factory = Random.Range(3, 7);
     }
     private IEnumerator Factory()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(10);
         MainScript.Factory += MainScript.GrowthFactory;
         
         StartCoroutine(Factory());
