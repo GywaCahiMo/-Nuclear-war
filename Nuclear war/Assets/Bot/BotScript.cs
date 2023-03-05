@@ -7,6 +7,7 @@ public class BotScript : MonoBehaviour
     public test MainSrcipt;
     public ButtonAttak attakButton;
     public ChinaScript chinaScript;
+    public BritScript britScript;
 
     [SerializeField] public int moneyUsa, proUsa, rocketUsa, factoryUsa, growthProUsa = 1, growthRocketUsa = 1, growthFactoryUsa = 1;
     [SerializeField] private TMP_Text textRosketUsa, textProUsa, textFabricUsa;
@@ -22,7 +23,7 @@ public class BotScript : MonoBehaviour
         StartCoroutine(MoneyUsa());
 
         RandNomder = Random.Range(0, 3);
-        moneyUsa = Random.Range(20000, 50000);
+        moneyUsa = Random.Range(10000, 70000);
         factoryUsa = Random.Range(3, 7);
     }
     public void AttackUsa()
@@ -41,6 +42,13 @@ public class BotScript : MonoBehaviour
         {
             chinaScript.factoryChina += chinaScript.proChina / 5;
             chinaScript.proChina = 0;
+        }
+        //атака на англию
+        britScript.proBrit -= remainderRocketUsa;
+        if(britScript.proBrit< 0)
+        {
+            britScript.factoryBrit += britScript.proBrit / 5;
+            britScript.proBrit = 0;
         }
         rocketUsa = 0;
         remainderRocketUsa = 0;
