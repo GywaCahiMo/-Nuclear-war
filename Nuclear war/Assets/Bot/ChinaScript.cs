@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ChinaScript : MonoBehaviour
 {
@@ -8,13 +9,16 @@ public class ChinaScript : MonoBehaviour
     public ButtonAttak attakButton;
     public BotScript botUsaScript;
     public BritScript britScript;
+    public FranchScript franchScript;
+    public AfricaScript africaScript;
 
     [SerializeField] public int moneyChina, proChina, rocketChina, factoryChina, growthProChina = 1, growthRocketChina = 1, growthFactoryChina = 1;
     [SerializeField] private TMP_Text textRosketChina, textProChina, textFabricChina;
     [SerializeField] private int RandNomder, counterShop = 0;
     private int remainderRocketChina;
     public GameObject ImageChinaAttack;
-    
+    public Image ImageFone;
+
 
     private void Start()
     {
@@ -24,7 +28,7 @@ public class ChinaScript : MonoBehaviour
         StartCoroutine(MoneyChina());
 
         RandNomder = Random.Range(0, 3);
-        moneyChina= Random.Range(10000, 70000);
+        moneyChina= Random.Range(100, 700);
         factoryChina= Random.Range(3, 7);
     }
     public void AttackChina()
@@ -51,7 +55,20 @@ public class ChinaScript : MonoBehaviour
             britScript.factoryBrit += britScript.proBrit / 5;
             britScript.proBrit = 0;
         }
-
+        //атака на францию
+        franchScript.proFranch -= remainderRocketChina;
+        if (franchScript.proFranch < 0)
+        {
+            franchScript.factoryFranch += franchScript.proFranch / 5;
+            franchScript.proFranch = 0;
+        }
+        //атака на ЮАР
+        africaScript.proAfrica -= remainderRocketChina;
+        if (africaScript.proAfrica < 0)
+        {
+            africaScript.factoryAfrica += africaScript.proAfrica / 5;
+            africaScript.proAfrica = 0;
+        }
         rocketChina = 0;
         remainderRocketChina = 0;
     }
@@ -76,111 +93,112 @@ public class ChinaScript : MonoBehaviour
     private IEnumerator MoneyChina()
     {
         yield return new WaitForSeconds(2);
-        moneyChina += factoryChina * 100;
+        moneyChina += factoryChina * 1;
         StartCoroutine(MoneyChina());
     }
     private void Update()
     {
         if (RandNomder == 0)
         {
-            if (counterShop == 0 && moneyChina >= 10000)
+            if (counterShop == 0 && moneyChina >= 100)
             {
-                moneyChina -= 10000;
+                moneyChina -= 100;
                 growthRocketChina++;
                 counterShop++;
             }
-            if (counterShop == 1 && moneyChina >= 10000)
+            if (counterShop == 1 && moneyChina >= 100)
             {
-                moneyChina -= 10000;
+                moneyChina -= 100;
                 growthRocketChina++;
                 counterShop++;
             }
-            if (counterShop == 2 && moneyChina >= 10000)
+            if (counterShop == 2 && moneyChina >= 100)
             {
-                moneyChina -= 10000;
+                moneyChina -= 100;
                 growthRocketChina++;
                 counterShop++;
             }
-            if (counterShop == 3 && moneyChina >= 15000)
+            if (counterShop == 3 && moneyChina >= 150)
             {
-                moneyChina -= 15000;
+                moneyChina -= 150;
                 growthProChina++;
                 counterShop++;
             }
-            if (counterShop == 4 && moneyChina >= 20000)
+            if (counterShop == 4 && moneyChina >= 200)
             {
-                moneyChina -= 20000;
+                moneyChina -= 200;
                 growthFactoryChina++;
                 counterShop = 0;
             }
         }
         if (RandNomder == 1)
         {
-            if (counterShop == 0 && moneyChina >= 10000)
+            if (counterShop == 0 && moneyChina >= 100)
             {
-                moneyChina -= 10000;
+                moneyChina -= 100;
                 growthRocketChina++;
                 counterShop++;
             }
-            if (counterShop == 1 && moneyChina >= 15000)
+            if (counterShop == 1 && moneyChina >= 150)
             {
-                moneyChina -= 15000;
+                moneyChina -= 150;
                 growthProChina++;
                 counterShop++;
             }
-            if (counterShop == 2 && moneyChina >= 20000)
+            if (counterShop == 2 && moneyChina >= 200)
             {
-                moneyChina -= 20000;
+                moneyChina -= 200;
                 growthFactoryChina++;
                 counterShop++;
             }
-            if (counterShop == 3 && moneyChina >= 20000)
+            if (counterShop == 3 && moneyChina >= 200)
             {
-                moneyChina -= 20000;
+                moneyChina -= 200;
                 growthFactoryChina++;
                 counterShop++;
             }
-            if (counterShop == 4 && moneyChina >= 20000)
+            if (counterShop == 4 && moneyChina >= 200)
             {
-                moneyChina -= 20000;
+                moneyChina -= 200;
                 growthFactoryChina++;
                 counterShop = 0;
             }
         }
         if (RandNomder == 2)
         {
-            if (counterShop == 0 && moneyChina >= 10000)
+            if (counterShop == 0 && moneyChina >= 100)
             {
-                moneyChina -= 10000;
+                moneyChina -= 100;
                 growthRocketChina++;
                 counterShop++;
             }
-            if (counterShop == 1 && moneyChina >= 15000)
+            if (counterShop == 1 && moneyChina >= 150)
             {
-                moneyChina -= 15000;
+                moneyChina -= 150;
                 growthProChina++;
                 counterShop++;
             }
-            if (counterShop == 2 && moneyChina >= 15000)
+            if (counterShop == 2 && moneyChina >= 150)
             {
-                moneyChina -= 15000;
+                moneyChina -= 150;
                 growthProChina++;
                 counterShop++;
             }
-            if (counterShop == 3 && moneyChina >= 15000)
+            if (counterShop == 3 && moneyChina >= 150)
             {
-                moneyChina -= 15000;
+                moneyChina -= 150;
                 growthProChina++;
                 counterShop++;
             }
-            if (counterShop == 4 && moneyChina >= 20000)
+            if (counterShop == 4 && moneyChina >= 200)
             {
-                moneyChina -= 20000;
+                moneyChina -= 200;
                 growthFactoryChina++;
                 counterShop = 0;
             }
         }
-        if (rocketChina > MainSrcipt.Rocket && rocketChina > botUsaScript.rocketUsa && rocketChina >= 1000)
+        //атака 
+        if (rocketChina > MainSrcipt.Rocket && rocketChina > botUsaScript.rocketUsa && rocketChina > britScript.rocketBrit && rocketChina > franchScript.rocketFranch && rocketChina > africaScript.rocketAfrica && rocketChina >= 1000)
         {   
             ImageChinaAttack.SetActive(true);
             attakButton.AttacStart();          
@@ -194,6 +212,7 @@ public class ChinaScript : MonoBehaviour
             growthProChina = 0;
             growthRocketChina = 0;
             growthFactoryChina = 0;
+            ImageFone.color = new Color(0, 0, 0);
         }
         textRosketChina.text = rocketChina.ToString();
         textProChina.text = proChina.ToString();
